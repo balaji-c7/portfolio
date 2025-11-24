@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Balaji Chandrasekar | Software Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of Balaji Chandrasekar - Software Developer"
+    />
+
+    <style>
+      :root {
+        --bg: #050816;
+        --bg-alt: #0b1020;
+        --card: #111827;
+        --accent: #4f46e5;
+        --accent-soft: rgba(79, 70, 229, 0.15);
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --border: #1f2933;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+        --radius-xl: 18px;
+        --transition-fast: 0.2s ease-out;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(
+          circle at top,
+          #111827 0,
+          #020617 55%,
+          #000 100%
+        );
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Layout */
+      .container {
+        width: 100%;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 1.2rem;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: linear-gradient(
+          to bottom,
+          rgba(2, 6, 23, 0.98),
+          rgba(15, 23, 42, 0.85),
+          transparent
+        );
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+      }
+
+      .logo-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #a5b4fc, #4f46e5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.4);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.4rem;
+        font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding: 0.35rem 0;
+        color: var(--muted);
+        transition: color var(--transition-fast);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(to right, #22d3ee, #4f46e5, #a855f7);
+        transition: width var(--transition-fast);
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-links a.active {
+        color: #e5e7eb;
+      }
+
+      .nav-links a.active::after {
+        width: 100%;
+      }
+
+      /* Sections */
+      section {
+        padding: 4.5rem 0;
+      }
+
+      .section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .section-kicker {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--muted);
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+      }
+
+      .section-subtitle {
+        font-size: 0.95rem;
+        color: var(--muted);
+        max-width: 520px;
+      }
+
+      /* Hero */
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+        gap: 2.8rem;
+        align-items: center;
+      }
+
+      .hero-kicker {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--muted);
+        margin-bottom: 0.6rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.4rem, 4vw, 3rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 0.75rem;
+      }
+
+      .hero-title span {
+        background: linear-gradient(to right, #22d3ee, #4f46e5, #a855f7);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        color: var(--muted);
+        font-size: 0.98rem;
+        max-width: 540px;
+        margin-bottom: 1.4rem;
+      }
+
+      .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.6rem;
+      }
+
+      .tag-pill {
+        font-size: 0.78rem;
+        padding: 0.28rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        color: #cbd5f5;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .tag-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #a5b4fc, #4f46e5);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.6rem 1.25rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid transparent;
+        cursor: pointer;
+        background: transparent;
+        color: var(--text);
+        transition: transform var(--transition-fast),
+          box-shadow var(--transition-fast), background var(--transition-fast),
+          border var(--transition-fast), color var(--transition-fast);
+      }
+
+      .btn-primary {
+        background: linear-gradient(to right, #4f46e5, #06b6d4);
+        box-shadow: 0 16px 35px rgba(15, 23, 42, 0.8);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 22px 45px rgba(15, 23, 42, 0.9);
+      }
+
+      .btn-ghost {
+        border-color: rgba(148, 163, 184, 0.4);
+        background: rgba(15, 23, 42, 0.65);
+      }
+
+      .btn-ghost:hover {
+        background: rgba(15, 23, 42, 0.9);
+        border-color: rgba(129, 140, 248, 0.8);
+      }
+
+      .btn-icon {
+        font-size: 1rem;
+      }
+
+      .hero-right {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-card {
+        width: 100%;
+        max-width: 340px;
+        border-radius: 28px;
+        padding: 1.25rem 1.3rem 1.4rem;
+        background: radial-gradient(
+            circle at 0 0,
+            rgba(56, 189, 248, 0.06),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 100% 0,
+            rgba(129, 140, 248, 0.09),
+            transparent 60%
+          ),
+          var(--card);
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        display: flex;
+        flex-direction: column;
+        gap: 0.95rem;
+      }
+
+      .hero-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .hero-card-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .hero-card-tag {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+
+      .hero-card-pill {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.55rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.4);
+      }
+
+      .hero-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.6rem;
+      }
+
+      .hero-stat {
+        padding: 0.55rem 0.6rem;
+        border-radius: 0.9rem;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(31, 41, 55, 0.9);
+      }
+
+      .hero-stat-label {
+        font-size: 0.68rem;
+        color: var(--muted);
+      }
+
+      .hero-stat-value {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 0.1rem;
+      }
+
+      .hero-card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.78rem;
+      }
+
+      .hero-card-footer span {
+        color: var(--muted);
+      }
+
+      .hero-badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        background: linear-gradient(
+          to right,
+          rgba(45, 212, 191, 0.12),
+          rgba(129, 140, 248, 0.1)
+        );
+        border: 1px solid rgba(45, 212, 191, 0.45);
+      }
+
+      /* Cards & grids */
+      .grid-two {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: radial-gradient(
+            circle at 0 0,
+            rgba(56, 189, 248, 0.07),
+            transparent 55%
+          ),
+          var(--card);
+        border-radius: var(--radius-xl);
+        padding: 1.2rem 1.25rem;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+        transition: transform var(--transition-fast),
+          box-shadow var(--transition-fast), border var(--transition-fast),
+          background var(--transition-fast);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.07),
+          transparent 55%
+        );
+        opacity: 0;
+        transition: opacity var(--transition-fast);
+        pointer-events: none;
+      }
+
+      .card:hover::before {
+        opacity: 1;
+      }
+
+      .card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(129, 140, 248, 0.5);
+        box-shadow: 0 24px 55px rgba(15, 23, 42, 0.9);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .card-subtitle {
+        font-size: 0.76rem;
+        color: var(--muted);
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.7rem;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.4);
+        color: #cbd5f5;
+      }
+
+      .card-body {
+        font-size: 0.86rem;
+        color: #d1d5db;
+        margin-bottom: 0.6rem;
+      }
+
+      .card-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 0.35rem;
+      }
+
+      .card-list li {
+        position: relative;
+        padding-left: 0.9rem;
+        margin-bottom: 0.3rem;
+        font-size: 0.83rem;
+        color: #cbd5f5;
+      }
+
+      .card-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #a5b4fc;
+      }
+
+      .card-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+      }
+
+      /* Skills */
+      .skill-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+
+      .skill-badge {
+        font-size: 0.78rem;
+        padding: 0.28rem 0.7rem;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.45);
+      }
+
+      .skills-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 1.4rem;
+        align-items: flex-start;
+      }
+
+      .skills-note {
+        font-size: 0.84rem;
+        color: var(--muted);
+        margin-top: 0.6rem;
+      }
+
+      /* Timeline (Education) */
+      .timeline {
+        position: relative;
+        padding-left: 1.2rem;
+        border-left: 1px solid rgba(148, 163, 184, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .timeline-item {
+        position: relative;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -1.6rem;
+        top: 0.12rem;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #4f46e5;
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.25);
+      }
+
+      .timeline-degree {
+        font-size: 0.94rem;
+        font-weight: 600;
+      }
+
+      .timeline-meta {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin: 0.05rem 0 0.25rem;
+      }
+
+      .timeline-extra {
+        font-size: 0.78rem;
+        color: #cbd5f5;
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 1.5rem;
+      }
+
+      .contact-detail {
+        font-size: 0.9rem;
+        color: #e5e7eb;
+      }
+
+      .contact-detail p {
+        margin-bottom: 0.3rem;
+      }
+
+      .contact-links {
+        margin-top: 0.8rem;
+      }
+
+      .contact-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.86rem;
+        color: #cbd5f5;
+        padding: 0.3rem 0;
+      }
+
+      .contact-links a span.icon {
+        font-size: 1.05rem;
+      }
+
+      .contact-card {
+        background: radial-gradient(
+            circle at 0 0,
+            rgba(45, 212, 191, 0.08),
+            transparent 50%
+          ),
+          var(--card);
+        border-radius: var(--radius-xl);
+        padding: 1.1rem 1.2rem;
+        border: 1px solid rgba(45, 212, 191, 0.55);
+        font-size: 0.85rem;
+        color: #d1fae5;
+        box-shadow: 0 18px 40px rgba(6, 78, 59, 0.6);
+      }
+
+      .contact-card-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+      }
+
+      .contact-card p {
+        margin-bottom: 0.3rem;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid rgba(148, 163, 184, 0.22);
+        padding: 1.4rem 0 2rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero-grid,
+        .grid-two,
+        .skills-layout,
+        .contact-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .hero-right {
+          order: -1;
+        }
+
+        .hero {
+          padding-top: 2.6rem;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 2.2rem;
+        }
+
+        section {
+          padding: 3.1rem 0;
+        }
+
+        .hero-card {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <div class="logo">
+          <div class="logo-mark">B</div>
+          <div>
+            <div style="font-size: 0.88rem">Balaji Chandrasekar</div>
+            <div style="font-size: 0.7rem; color: var(--muted)">
+              Software Developer
+            </div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-kicker">Portfolio · 2025</div>
+            <h1 class="hero-title">
+              Hi, I'm <span>Balaji Chandrasekar</span> 👋
+            </h1>
+            <p class="hero-subtitle">
+              A passionate software developer with a focus on building clean,
+              maintainable and practical solutions. I enjoy working across the
+              stack and turning ideas into real, usable products.
+            </p>
+
+            <div class="hero-tags">
+              <div class="tag-pill">
+                <span class="tag-dot"></span> Software Development
+              </div>
+              <div class="tag-pill">
+                <span class="tag-dot"></span> Java · MERN · Python
+              </div>
+              <div class="tag-pill">
+                <span class="tag-dot"></span> RISC-V & VLSI exposure
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="mailto:bala221104@gmail.com" class="btn btn-primary">
+                <span class="btn-icon">📨</span>
+                Contact Me
+              </a>
+              <a
+                href="https://github.com/balaji-c7"
+                target="_blank"
+                class="btn btn-ghost"
+                rel="noreferrer"
+              >
+                <span class="btn-icon">💻</span>
+                View GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <aside class="hero-card" aria-label="Quick overview">
+              <div class="hero-card-header">
+                <div>
+                  <div class="hero-card-title">Quick Snapshot</div>
+                  <div class="hero-card-tag">What I bring to the table</div>
+                </div>
+                <span class="hero-card-pill">Open to opportunities</span>
+              </div>
+
+              <div class="hero-stat-grid">
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Core Stack</div>
+                  <div class="hero-stat-value">Java · MERN</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Focus</div>
+                  <div class="hero-stat-value">Web · Backend</div>
+                </div>
+                <div class="hero-stat">
+                  <div class="hero-stat-label">Languages</div>
+                  <div class="hero-stat-value">Ta · En · Jp</div>
+                </div>
+              </div>
+
+              <div class="hero-card-footer">
+                <span>Based in Tiruvannamalai, Tamilnadu 🇮🇳</span>
+                <span class="hero-badge"
+                  >B.E CSE · Velammal Engineering College</span
+                >
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">About</div>
+            <h2 class="section-title">Who I am</h2>
+            <p class="section-subtitle">
+              I like understanding how things work end-to-end — from low-level
+              architecture like RISC-V to high-level web apps that help real
+              users.
+            </p>
+          </div>
+
+          <div class="grid-two">
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Short Summary</h3>
+                  <p class="card-subtitle">In my own words</p>
+                </div>
+              </div>
+              <div class="card-body">
+                I am a software developer focused on writing clean, maintainable
+                code and building useful software. I’ve worked as a Java
+                developer in a real-time project environment, contributed to
+                debugging and feature development, and explored VLSI system
+                design using RISC-V. My goal is to keep learning, stay
+                practical, and contribute to impactful projects.
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">What I'm interested in</h3>
+                  <p class="card-subtitle">Areas I enjoy working on</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <ul class="card-list">
+                  <li>
+                    Building full-stack web applications that solve real
+                    problems.
+                  </li>
+                  <li>Back-end development with Java and Node.js.</li>
+                  <li>
+                    Exploring RISC-V and understanding how computers work under
+                    the hood.
+                  </li>
+                  <li>
+                    Learning and improving my Japanese communication skills.
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Skills</div>
+            <h2 class="section-title">Tech stack & strengths</h2>
+            <p class="section-subtitle">
+              A mix of programming languages, web technologies and soft skills I
+              use in projects.
+            </p>
+          </div>
+
+          <div class="skills-layout">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Technical Skills</h3>
+                  <p class="card-subtitle">Daily drivers & tools</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="skill-badges">
+                  <span class="skill-badge">Java</span>
+                  <span class="skill-badge">Python</span>
+                  <span class="skill-badge">JavaScript</span>
+                  <span class="skill-badge">HTML</span>
+                  <span class="skill-badge">CSS</span>
+                  <span class="skill-badge">MongoDB</span>
+                  <span class="skill-badge">MERN concepts</span>
+                  <span class="skill-badge">Linux Basics</span>
+                  <span class="skill-badge">Project Management</span>
+                </div>
+                <p class="skills-note">
+                  I also have exposure to VLSI system design workflows and
+                  RISC-V architecture through internships.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Languages & Communication</h3>
+                  <p class="card-subtitle">Human languages</p>
+                </div>
+              </div>
+              <div class="card-body">
+                <ul class="card-list">
+                  <li>Tamil – Native</li>
+                  <li>English – Professional</li>
+                  <li>Japanese – Learning (JLPT N3 level)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Experience</div>
+            <h2 class="section-title">Work & internships</h2>
+            <p class="section-subtitle">
+              Hands-on experience in Java development and VLSI system design
+              using RISC-V.
+            </p>
+          </div>
+
+          <div class="grid-two">
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Java Developer Intern</h3>
+                  <p class="card-subtitle">
+                    ReTech Solution Pvt Ltd · July 2023
+                  </p>
+                </div>
+                <span class="chip">Java · Debugging</span>
+              </div>
+              <div class="card-body">
+                <ul class="card-list">
+                  <li>
+                    Worked as a Java developer in a technical team on a
+                    real-time project.
+                  </li>
+                  <li>
+                    Contributed to debugging, fixing issues and improving
+                    existing features.
+                  </li>
+                  <li>Supported design and implementation tasks using Java.</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <span>Focus: Problem solving, clean code, collaboration</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">VLSI System Design Intern</h3>
+                  <p class="card-subtitle">RISC-V · Feb 2024 – Mar 2024</p>
+                </div>
+                <span class="chip">RISC-V · VLSI</span>
+              </div>
+              <div class="card-body">
+                <ul class="card-list">
+                  <li>
+                    Learned the basics of Linux commands and development
+                    environment.
+                  </li>
+                  <li>
+                    Got exposure to VLSI system design and RISC-V architecture
+                    workflow.
+                  </li>
+                  <li>
+                    Interacted with experienced professionals from the VLSI
+                    industry.
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <span
+                  >Focus: Hardware–software understanding, low-level
+                  concepts</span
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Projects</div>
+            <h2 class="section-title">Things I’ve built</h2>
+            <p class="section-subtitle">
+              Academic and personal projects that show how I think and build.
+            </p>
+          </div>
+
+          <div class="grid-two">
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">EduTech Platform</h3>
+                  <p class="card-subtitle">
+                    Full-stack web application for volunteers and students
+                  </p>
+                </div>
+                <span class="chip">Full Stack</span>
+              </div>
+              <div class="card-body">
+                <p>
+                  A full-stack application created for a volunteer organisation.
+                  The platform connects volunteer teachers with economically
+                  weaker students and helps manage learning activities.
+                </p>
+                <ul class="card-list">
+                  <li>
+                    Allows volunteers to teach students through online
+                    classrooms.
+                  </li>
+                  <li>
+                    Designed to be simple, scalable and easy for non-technical
+                    users.
+                  </li>
+                  <li>Focus on real-world usage and social impact.</li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <span>Area: Education · Non-profit · Web</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Learning Management System (LMS)</h3>
+                  <p class="card-subtitle">
+                    End-to-end platform for managing learning workflow
+                  </p>
+                </div>
+                <span class="chip">LMS</span>
+              </div>
+              <div class="card-body">
+                <p>
+                  The platform is designed to manage multiple aspects of the
+                  learning process for institutions and learners.
+                </p>
+                <ul class="card-list">
+                  <li>Supports course enrollment and student management.</li>
+                  <li>
+                    Includes attendance tracking, assessments and grading.
+                  </li>
+                  <li>
+                    Handles certificate generation and overall learning
+                    progress.
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <span>Area: EdTech · Workflow automation</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Education</div>
+            <h2 class="section-title">Academic journey</h2>
+            <p class="section-subtitle">
+              A strong base in Computer Science, with steady performance and
+              continuous learning.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-degree">
+                  B.E. Computer Science and Engineering
+                </div>
+                <div class="timeline-meta">
+                  Velammal Engineering College · Nov 2021 – May 2025
+                </div>
+                <div class="timeline-extra">Cumulative GPA: 7.16</div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-degree">
+                  Higher Secondary Certificate (HSC)
+                </div>
+                <div class="timeline-meta">
+                  Govt. Hr. Sec. School · June 2020 – April 2021
+                </div>
+                <div class="timeline-extra">Percentage: 83.72%</div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-degree">
+                  Secondary School Leaving Certificate (SSLC)
+                </div>
+                <div class="timeline-meta">
+                  Govt. Hr. Sec. School · June 2018 – April 2019
+                </div>
+                <div class="timeline-extra">Percentage: 80.00%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Contact</div>
+            <h2 class="section-title">Let’s connect</h2>
+            <p class="section-subtitle">
+              Feel free to reach out for opportunities, collaborations, or just
+              to say hi.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-detail">
+              <p><strong>Name:</strong> Balaji Chandrasekar</p>
+              <p><strong>Role:</strong> Software Developer</p>
+              <p><strong>Location:</strong> Tiruvannamalai, Tamilnadu, India</p>
+
+              <div class="contact-links">
+                <a href="tel:+919342976898">
+                  <span class="icon">📱</span>
+                  <span>+91 93429 76898</span>
+                </a>
+                <a href="mailto:bala221104@gmail.com">
+                  <span class="icon">✉️</span>
+                  <span>bala221104@gmail.com</span>
+                </a>
+                <a
+                  href="https://github.com/balaji-c7"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span class="icon">🐙</span>
+                  <span>github.com/balaji-c7</span>
+                </a>
+              </div>
+            </div>
+
+            <aside class="contact-card">
+              <div class="contact-card-title">What I’m looking for</div>
+              <p>
+                Internships or full-time roles in software development,
+                especially in web development, Java back-end, or full-stack
+                projects.
+              </p>
+              <p>
+                I’m open to learning new technologies, contributing to existing
+                teams, and building products that are useful in the real world.
+              </p>
+              <p>
+                If you think my profile matches what you’re building, I’d love
+                to talk.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span
+          >© <span id="year"></span> Balaji Chandrasekar. All rights
+          reserved.</span
+        >
+      </div>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Smooth scroll + active link highlight
+      const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const section = document.getElementById(targetId);
+          if (section) {
+            window.scrollTo({
+              top: section.offsetTop - 70,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Highlight active section in navbar
+      const sections = document.querySelectorAll("main section[id]");
+      window.addEventListener("scroll", () => {
+        let currentId = "";
+        const scrollPos =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        sections.forEach((section) => {
+          const offset = section.offsetTop - 120;
+          const height = section.offsetHeight;
+          if (scrollPos >= offset && scrollPos < offset + height) {
+            currentId = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + currentId
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
