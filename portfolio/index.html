@@ -1136,8 +1136,17 @@
       </section>
     </main>
 
-    <script>
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span
+          >© <span id="year"></span> Balaji Chandrasekar.</span
+        >
+      </div>
+    </footer>
 
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
       // Smooth scroll + active link highlight
       const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
 
