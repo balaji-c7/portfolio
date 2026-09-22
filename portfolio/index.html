@@ -1,1193 +1,1110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Balaji Chandrasekar | Full Stack Software Engineer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Portfolio of Balaji Chandrasekar - Full Stack Software Engineer"
-    />
+<!-- 
+  Hey there! Looking at the source code? 
+  Feel free to reach out if you want to connect or collaborate.
+  - Balaji
+-->
+<head>
+  <meta charset="UTF-8" />
+  <title>Balaji Chandrasekar | Full Stack Software Engineer</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Balaji Chandrasekar - Full Stack Software Engineer" />
 
-    <style>
-      :root {
-        /* Professional Light Mode B&W + Deep Blue Accent */
-        --bg: #ffffff;
-        --card: #ffffff;
-        --card-hover: #f8fafc;
-        --accent: #005bb5; /* Deeper professional blue */
-        --accent-soft: rgba(0, 91, 181, 0.08);
-        --text: #0f172a;
-        --muted: #475569;
-        --border: #e2e8f0;
-        --border-hover: #cbd5e1;
-        --shadow-soft: 0 2px 8px rgba(15, 23, 42, 0.04);
-        --shadow-hover: 0 10px 25px rgba(15, 23, 42, 0.08);
-        --radius-xl: 8px; /* Sharper corners for a professional look */
-        --transition-fast: 0.2s ease;
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME
+       ========================================================================== */
+    :root {
+      /* Color Palette */
+      --bg-color: #ffffff;
+      --card-bg: #ffffff;
+      --card-hover-bg: #f8fafc;
+      
+      --brand-blue: #005bb5;
+      --brand-blue-light: rgba(0, 91, 181, 0.08);
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      
+      --border-light: #e2e8f0;
+      --border-dark: #cbd5e1;
+      
+      /* Shadows & Radii */
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --border-radius: 8px;
+      
+      --transition-speed: 0.2s ease;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Main wrapper to keep things centered */
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ==========================================================================
+       NAVIGATION
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 4px;
+      background-color: var(--text-main);
+      color: var(--bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 5px 0;
+      color: var(--text-muted);
+      transition: color var(--transition-speed);
+    }
+
+    /* Animated underline for nav links */
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--text-main);
+      transition: width var(--transition-speed);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+    
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: var(--text-main);
+    }
+    .nav-links a.active::after {
+      background-color: var(--brand-blue);
+    }
+
+    /* ==========================================================================
+       TYPOGRAPHY & SHARED SECTIONS
+       ========================================================================== */
+    section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--brand-blue);
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 600px;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      padding-top: 40px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 15px;
+      margin-top: 10px;
+    }
+
+    /* Custom underline effect for my name */
+    .hero-title span {
+      color: var(--text-main);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-title span::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: var(--brand-blue);
+      bottom: 6px;
+      left: 0;
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 560px;
+      margin-bottom: 24px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+
+    .tag {
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 50px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--text-main);
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all var(--transition-speed);
+    }
+
+    .btn-primary {
+      background-color: var(--text-main);
+      color: var(--bg-color);
+      border-color: var(--text-main);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--brand-blue);
+      color: #fff;
+      border-color: var(--brand-blue);
+      box-shadow: 0 4px 12px var(--brand-blue-light);
+    }
+
+    .btn-secondary {
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border-color: var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--card-hover-bg);
+      border-color: var(--text-main);
+    }
+
+    /* Quick Snapshot Card */
+    .snapshot-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .snapshot-card {
+      width: 100%;
+      max-width: 340px;
+      border-radius: var(--border-radius);
+      padding: 20px;
+      background-color: var(--card-bg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+
+    .snapshot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .snapshot-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .snapshot-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .status-badge {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: var(--brand-blue-light);
+      color: var(--brand-blue);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .stat-box {
+      padding: 8px;
+      border-radius: 6px;
+      background-color: var(--card-hover-bg);
+      border: 1px solid var(--border-light);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .snapshot-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       CARDS & GRIDS (Used in About, Projects, Exp)
+       ========================================================================== */
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .content-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-speed);
+    }
+
+    .content-card:hover {
+      border-color: var(--border-dark);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .card-chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background-color: var(--card-hover-bg);
+      border: 1px solid var(--border-light);
+      height: fit-content;
+    }
+
+    .card-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+    
+    .card-body strong {
+      color: var(--text-main);
+    }
+
+    /* Custom bullet points */
+    .feature-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .feature-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--brand-blue);
+    }
+
+    .card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--brand-blue);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       SKILLS SECTION
+       ========================================================================== */
+    .skills-wrapper {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      background-color: var(--card-hover-bg);
+      border: 1px solid var(--border-light);
+    }
+
+    .skills-disclaimer {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--border-light);
+    }
+
+    /* ==========================================================================
+       EDUCATION TIMELINE
+       ========================================================================== */
+    .timeline {
+      padding-left: 20px;
+      border-left: 2px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .timeline-node {
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -27px; /* Aligns dot over the border */
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--bg-color);
+      border: 2px solid var(--brand-blue);
+    }
+
+    .timeline-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .timeline-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 2px 0 6px;
+    }
+
+    .timeline-grade {
+      font-size: 12px;
+      display: inline-block;
+      padding: 2px 8px;
+      background-color: var(--card-hover-bg);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+    }
+
+    /* ==========================================================================
+       CONTACT & FOOTER
+       ========================================================================== */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-info p {
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    
+    .contact-info p strong {
+      color: var(--text-main);
+    }
+
+    .contact-links {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      transition: color var(--transition-speed);
+    }
+
+    .contact-links a:hover {
+      color: var(--brand-blue);
+    }
+
+    .contact-box {
+      background-color: var(--card-hover-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      border: 1px solid var(--border-light);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .contact-box h4 {
+      font-size: 15px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 25px 0 30px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       MEDIA QUERIES (Mobile responsiveness)
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .hero-layout,
+      .grid-2-col,
+      .skills-wrapper,
+      .contact-wrapper {
+        grid-template-columns: 1fr;
       }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+      .snapshot-wrapper {
+        order: -1; /* Moves snapshot to top on mobile */
       }
 
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      /* Layout */
-      .container {
-        width: 100%;
-        max-width: 1120px;
-        margin: 0 auto;
-        padding: 0 1.2rem;
-      }
-
-      /* Navbar */
-      .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(12px);
-        background: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .navbar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.75rem 0;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-      }
-
-      .logo-mark {
-        width: 28px;
-        height: 28px;
-        border-radius: 4px;
-        background: var(--text);
-        color: var(--bg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.9rem;
-        font-weight: 800;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 1.4rem;
-        font-size: 0.9rem;
-      }
-
-      .nav-links a {
-        position: relative;
-        padding: 0.35rem 0;
-        color: var(--muted);
-        transition: color var(--transition-fast);
-      }
-
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        background: var(--text);
-        transition: width var(--transition-fast);
-      }
-
-      .nav-links a:hover {
-        color: var(--text);
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      .nav-links a.active {
-        color: var(--text);
-      }
-
-      .nav-links a.active::after {
-        width: 100%;
-        background: var(--accent);
-      }
-
-      /* Sections */
-      section {
-        padding: 2.5rem 0; /* Reduced from 4.5rem */
-      }
-
-      .section-header {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        margin-bottom: 1.5rem; /* Reduced from 2.5rem */
-      }
-
-      .section-kicker {
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--accent);
-        font-weight: 600;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-        font-weight: 700;
-      }
-
-      .section-subtitle {
-        font-size: 0.95rem;
-        color: var(--muted);
-        max-width: 600px;
-      }
-
-      /* Hero */
       .hero {
-        padding-top: 2rem;
+        padding-top: 30px;
       }
+    }
 
-      .hero-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-        gap: 2rem; /* Reduced from 2.8rem */
-        align-items: center;
-      }
-
-      .hero-kicker {
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--muted);
-        margin-bottom: 0.5rem;
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; /* TODO: Build a hamburger menu for mobile later */
       }
 
       .hero-title {
-        font-size: clamp(2rem, 3.5vw, 2.75rem);
-        font-weight: 800;
-        line-height: 1.15;
-        margin-bottom: 0.75rem;
+        font-size: 32px;
       }
 
-      .hero-title span {
-        color: var(--text);
-        position: relative;
-        display: inline-block;
+      section {
+        padding: 40px 0;
       }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="logo-wrapper">
+        <div class="logo-icon">B</div>
+        <div>
+          <div style="font-size: 14px;">Balaji Chandrasekar</div>
+          <div style="font-size: 11px; color: var(--text-muted); font-weight: normal;">
+            Full Stack Software Engineer <!--[cite: 1] -->
+          </div>
+        </div>
+      </div>
       
-      .hero-title span::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 4px;
-        background: var(--accent);
-        bottom: 6px;
-        left: 0;
-        z-index: -1;
-        opacity: 0.6;
-      }
-
-      .hero-subtitle {
-        color: var(--muted);
-        font-size: 0.98rem;
-        max-width: 560px;
-        margin-bottom: 1.2rem;
-      }
-
-      .hero-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.4rem;
-      }
-
-      .tag-pill {
-        font-size: 0.78rem;
-        padding: 0.3rem 0.75rem;
-        border-radius: 999px;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        color: var(--text);
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-
-      .tag-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 999px;
-        background: var(--text);
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.6rem 1.25rem;
-        border-radius: 999px;
-        font-size: 0.88rem;
-        font-weight: 500;
-        border: 1px solid transparent;
-        cursor: pointer;
-        transition: all var(--transition-fast);
-      }
-
-      .btn-primary {
-        background: var(--text);
-        color: var(--bg);
-        border: 1px solid var(--text);
-      }
-
-      .btn-primary:hover {
-        background: var(--accent);
-        color: #ffffff;
-        border-color: var(--accent);
-        box-shadow: 0 4px 12px var(--accent-soft);
-      }
-
-      .btn-ghost {
-        border-color: var(--border);
-        background: var(--card);
-        color: var(--text);
-      }
-
-      .btn-ghost:hover {
-        background: var(--card-hover);
-        border-color: var(--text);
-      }
-
-      .hero-right {
-        display: flex;
-        justify-content: center;
-      }
-
-      .hero-card {
-        width: 100%;
-        max-width: 340px;
-        border-radius: var(--radius-xl);
-        padding: 1.25rem;
-        background: var(--card);
-        box-shadow: var(--shadow-soft);
-        border: 1px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .hero-card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.6rem;
-      }
-
-      .hero-card-title {
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
-
-      .hero-card-tag {
-        font-size: 0.75rem;
-        color: var(--muted);
-      }
-
-      .hero-card-pill {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-        border-radius: 4px;
-        background: var(--accent-soft);
-        border: 1px solid var(--accent-soft);
-        color: var(--accent);
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .hero-stat-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.5rem;
-      }
-
-      .hero-stat {
-        padding: 0.5rem;
-        border-radius: 6px;
-        background: var(--card-hover);
-        border: 1px solid var(--border);
-      }
-
-      .hero-stat-label {
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        color: var(--muted);
-        letter-spacing: 0.05em;
-      }
-
-      .hero-stat-value {
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin-top: 0.15rem;
-      }
-
-      .hero-card-footer {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-        font-size: 0.8rem;
-      }
-
-      .hero-card-footer span {
-        color: var(--muted);
-      }
-
-      /* Cards & grids */
-      .grid-two {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.2rem; /* Reduced from 1.5rem */
-      }
-
-      .card {
-        background: var(--card);
-        border-radius: var(--radius-xl);
-        padding: 1.25rem;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-soft);
-        transition: all var(--transition-fast);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .card:hover {
-        border-color: var(--border-hover);
-        box-shadow: var(--shadow-hover);
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        gap: 0.8rem;
-        margin-bottom: 0.6rem;
-      }
-
-      .card-title {
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .card-subtitle {
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-top: 0.1rem;
-      }
-
-      .chip {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.15rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 500;
-        background: var(--card-hover);
-        border: 1px solid var(--border);
-        color: var(--text);
-      }
-
-      .card-body {
-        font-size: 0.88rem;
-        color: var(--muted);
-        margin-bottom: 0.8rem;
-      }
-      
-      .card-body strong {
-        color: var(--text);
-      }
-
-      .card-list {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 0.5rem;
-      }
-
-      .card-list li {
-        position: relative;
-        padding-left: 1rem;
-        margin-bottom: 0.4rem;
-        font-size: 0.88rem;
-        color: var(--text);
-      }
-
-      .card-list li::before {
-        content: "▹";
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: var(--accent);
-      }
-
-      .card-footer {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.3rem;
-        font-size: 0.75rem;
-        color: var(--accent);
-        font-weight: 500;
-      }
-
-      /* Skills */
-      .skill-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-      }
-
-      .skill-badge {
-        font-size: 0.8rem;
-        padding: 0.25rem 0.6rem;
-        border-radius: 4px;
-        background: var(--card-hover);
-        border: 1px solid var(--border);
-        color: var(--text);
-      }
-
-      .skills-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-        gap: 1.2rem; /* Reduced from 1.4rem */
-        align-items: flex-start;
-      }
-
-      .skills-note {
-        font-size: 0.82rem;
-        color: var(--muted);
-        margin-top: 0.8rem;
-        padding-top: 0.8rem;
-        border-top: 1px dashed var(--border);
-      }
-
-      /* Timeline (Education) */
-      .timeline {
-        position: relative;
-        padding-left: 1.2rem;
-        border-left: 2px solid var(--border);
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .timeline-item {
-        position: relative;
-      }
-
-      .timeline-dot {
-        position: absolute;
-        left: -1.6rem;
-        top: 0.2rem;
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: var(--bg);
-        border: 2px solid var(--accent);
-      }
-
-      .timeline-degree {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      .timeline-meta {
-        font-size: 0.85rem;
-        color: var(--muted);
-        margin: 0.1rem 0 0.3rem;
-      }
-
-      .timeline-extra {
-        font-size: 0.8rem;
-        color: var(--text);
-        display: inline-block;
-        padding: 0.1rem 0.4rem;
-        background: var(--card-hover);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-      }
-
-      /* Contact */
-      .contact-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-        gap: 1.2rem;
-      }
-
-      .contact-detail {
-        font-size: 0.9rem;
-        color: var(--text);
-      }
-
-      .contact-detail p {
-        margin-bottom: 0.3rem;
-        color: var(--muted);
-      }
-      
-      .contact-detail p strong {
-        color: var(--text);
-      }
-
-      .contact-links {
-        margin-top: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-
-      .contact-links a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        color: var(--text);
-        padding: 0.3rem 0;
-        transition: color var(--transition-fast);
-      }
-
-      .contact-links a:hover {
-        color: var(--accent);
-      }
-
-      .contact-links a span.icon {
-        font-size: 1rem;
-        color: var(--muted);
-      }
-
-      .contact-card {
-        background: var(--card-hover);
-        border-radius: var(--radius-xl);
-        padding: 1.25rem;
-        border: 1px solid var(--border);
-        font-size: 0.88rem;
-        color: var(--muted);
-      }
-
-      .contact-card-title {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text);
-        margin-bottom: 0.5rem;
-      }
-
-      .contact-card p {
-        margin-bottom: 0.5rem;
-      }
-
-      /* Footer */
-      footer {
-        border-top: 1px solid var(--border);
-        padding: 1.5rem 0 2rem;
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-
-      .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-      }
-
-      /* Responsive */
-      @media (max-width: 900px) {
-        .hero-grid,
-        .grid-two,
-        .skills-layout,
-        .contact-grid {
-          grid-template-columns: minmax(0, 1fr);
-        }
-
-        .hero-right {
-          order: -1;
-        }
-
-        .hero {
-          padding-top: 2rem;
-        }
-      }
-
-      @media (max-width: 720px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero-title {
-          font-size: 2.2rem;
-        }
-
-        section {
-          padding: 2.5rem 0;
-        }
-
-        .hero-card {
-          max-width: 100%;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .hero-actions {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .btn {
-          justify-content: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="container navbar-inner">
-        <div class="logo">
-          <div class="logo-mark">B</div>
-          <div>
-            <div style="font-size: 0.88rem">Balaji Chandrasekar</div>
-            <div style="font-size: 0.7rem; color: var(--muted)">
-              Full Stack Software Engineer
+      <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <span class="hero-kicker">Portfolio · 2026</span>
+          <h1 class="hero-title">
+            Hi, I'm <span>Balaji Chandrasekar</span> 👋
+          </h1>
+          <p class="hero-desc">
+            A full-stack Software Engineer with hands-on production experience across React Native, Spring Boot, Node.js, and Python. I build clean, scalable systems from the ground up and bridge technical communication across cross-border teams. <!--[cite: 1] -->
+          </p>
+
+          <div class="hero-tags">
+            <div class="tag">
+              <span class="tag-dot"></span> Full Stack Engineering <!--[cite: 1] -->
+            </div>
+            <div class="tag">
+              <span class="tag-dot"></span> React Native & Spring Boot <!--[cite: 1] -->
+            </div>
+            <div class="tag">
+              <span class="tag-dot" style="background-color: var(--brand-blue);"></span> Bilingual (Japanese JLPT N3) <!--[cite: 1] -->
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <a href="mailto:bala221104@gmail.com" class="btn btn-primary">
+              Contact Me
+            </a>
+            <a href="https://linkedin.com/" target="_blank" class="btn btn-secondary" rel="noreferrer">
+              LinkedIn Profile <!--[cite: 1] -->
+            </a>
+          </div>
+        </div>
+
+        <div class="snapshot-wrapper">
+          <aside class="snapshot-card">
+            <div class="snapshot-header">
+              <div>
+                <div class="snapshot-title">Quick Snapshot</div>
+                <div class="snapshot-subtitle">What I bring to the table</div>
+              </div>
+              <span class="status-badge">Open</span>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-label">Core Stack</div>
+                <div class="stat-value">React · Spring</div> <!--[cite: 1] -->
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Focus</div>
+                <div class="stat-value">Web · Mobile</div> <!--[cite: 1] -->
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Languages</div>
+                <div class="stat-value">Ta · En · Jp</div> <!--[cite: 1] -->
+              </div>
+            </div>
+
+            <div class="snapshot-footer">
+              <span>Based in Chennai, Tamil Nadu 🇮🇳</span> <!--[cite: 1] -->
+              <span>B.E CSE · Velammal Engineering College</span> <!--[cite: 1] -->
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">About</span>
+          <h2 class="section-title">Who I am</h2>
+          <p class="section-subtitle">
+            I like understanding how things work end-to-end — from database design and backend architecture to intuitive frontend solutions.
+          </p>
+        </div>
+
+        <div class="grid-2-col">
+          <article class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Professional Summary</h3>
+                <p class="card-subtitle">In my own words</p>
+              </div>
+            </div>
+            <div class="card-body">
+              Full-stack Software Engineer with hands-on production experience across React Native, Spring Boot, Node.js, and Python, backed by strong database fundamentals in MySQL and MongoDB. Brings a rare combination of technical versatility and bilingual fluency in Japanese (JLPT N3), directly supporting cross-border client communication and translation in a live business environment. Has independently architected and delivered two full-stack platforms end-to-end. <!--[cite: 1] -->
+            </div>
+          </article>
+
+          <article class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">What I focus on</h3>
+                <p class="card-subtitle">Areas I excel in</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul class="feature-list">
+                <li>Architecting and delivering robust full-stack platforms end-to-end. <!--[cite: 1] --></li>
+                <li>Cross-platform mobile development with React Native and backend microservices with Spring Boot. <!--[cite: 1] --></li>
+                <li>Serving as a bilingual technical liaison, bridging communication gaps for Japanese clients (JLPT N3). <!--[cite: 1] --></li>
+                <li>Writing clean, scalable code within cross-functional engineering teams. <!--[cite: 1] --></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Skills</span>
+          <h2 class="section-title">Tech stack & strengths</h2>
+          <p class="section-subtitle">
+            A mix of programming languages, frameworks, and tools I use to ship production-ready applications.
+          </p>
+        </div>
+
+        <div class="skills-wrapper">
+          <div class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Technical Skills</h3>
+                <p class="card-subtitle">Daily drivers & tools</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="skill-badges">
+                <span class="skill-pill">Java</span> <!--[cite: 1] -->
+                <span class="skill-pill">Python</span> <!--[cite: 1] -->
+                <span class="skill-pill">JavaScript</span> <!--[cite: 1] -->
+                <span class="skill-pill">React.js</span> <!--[cite: 1] -->
+                <span class="skill-pill">React Native</span> <!--[cite: 1] -->
+                <span class="skill-pill">HTML5</span> <!--[cite: 1] -->
+                <span class="skill-pill">CSS3</span> <!--[cite: 1] -->
+                <span class="skill-pill">Node.js</span> <!--[cite: 1] -->
+                <span class="skill-pill">Spring Boot</span> <!--[cite: 1] -->
+                <span class="skill-pill">MongoDB</span> <!--[cite: 1] -->
+                <span class="skill-pill">MySQL</span> <!--[cite: 1] -->
+                <span class="skill-pill">Git/GitHub</span> <!--[cite: 1] -->
+              </div>
+              <p class="skills-disclaimer">
+                Certifications: MERN Stack Development (Udemy), Project Management Fundamentals (LinkedIn Learning). <!--[cite: 1] -->
+              </p>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Languages & Communication</h3>
+                <p class="card-subtitle">Human languages</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul class="feature-list">
+                <li>Tamil – Native <!--[cite: 1] --></li>
+                <li>English – Professional Fluency <!--[cite: 1] --></li>
+                <li>Japanese – JLPT N3 <!--[cite: 1] --></li>
+              </ul>
             </div>
           </div>
         </div>
-        <nav class="nav-links">
-          <a href="#home" class="active">Home</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#education">Education</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </div>
-    </header>
+    </section>
 
-    <!-- HERO -->
-    <main>
-      <section id="home" class="hero">
-        <div class="container hero-grid">
-          <div>
-            <div class="hero-kicker">Portfolio</div>
-            <h1 class="hero-title">
-              Hi, I'm <span>Balaji Chandrasekar</span> 
-            </h1>
-            <p class="hero-subtitle">
-              A full-stack Software Engineer with hands-on production experience across React Native, Spring Boot, Node.js, and Python. I build clean, scalable systems from the ground up and bridge technical communication across cross-border teams. 
-            </p>
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Experience</span>
+          <h2 class="section-title">Work history</h2>
+          <p class="section-subtitle">
+            Professional software development and technical bilingual integration.
+          </p>
+        </div>
 
-            <div class="hero-tags">
-              <div class="tag-pill">
-                <span class="tag-dot"></span> Full Stack Engineering 
+        <div class="grid-2-col">
+          <article class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Software Engineer Trainee</h3>
+                <p class="card-subtitle">Fujisakura Tech Pvt. Ltd. · March 2026 – Present <!--[cite: 1] --></p>
               </div>
-              <div class="tag-pill">
-                <span class="tag-dot"></span> React Native & Spring Boot 
+              <span class="card-chip">React Native · Spring Boot</span> <!--[cite: 1] -->
+            </div>
+            <div class="card-body">
+              <ul class="feature-list">
+                <li>Developing full-stack features working across React Native for mobile, Spring Boot for backend services, and MySQL for data persistence. <!--[cite: 1] --></li>
+                <li>Serving as the team's dedicated bilingual liaison for Japanese clients. <!--[cite: 1] --></li>
+                <li>Providing direct translation and technical support that bridged technical and business communication across cross-border teams, alongside core development responsibilities. <!--[cite: 1] --></li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              Focus: Full-stack mobile apps, bilingual communication
+            </div>
+          </article>
+
+          <article class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Java Developer Intern</h3>
+                <p class="card-subtitle">ReTech Solutions Pvt. Ltd. · July 2023 <!--[cite: 1] --></p>
               </div>
-              <div class="tag-pill">
-                <span class="tag-dot" style="background: var(--accent);"></span> Bilingual (Japanese JLPT N3) 
+              <span class="card-chip">Java · Spring Boot</span> <!--[cite: 1] -->
+            </div>
+            <div class="card-body">
+              <ul class="feature-list">
+                <li>Contributed to a real-time, education-domain application, working within a Java and Spring Boot codebase. <!--[cite: 1] --></li>
+                <li>Debugged and resolved issues across core application modules. <!--[cite: 1] --></li>
+                <li>Contributed to design discussions, strengthening overall code stability and reliability. <!--[cite: 1] --></li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              Focus: Problem solving, clean code, reliability
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Projects</span>
+          <h2 class="section-title">Things I’ve built</h2>
+          <p class="section-subtitle">
+            Freelance projects independently architected from design through implementation.
+          </p>
+        </div>
+
+        <div class="grid-2-col">
+          <article class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">EDUTech Platform</h3>
+                <p class="card-subtitle">Freelance · Full-stack e-learning platform <!--[cite: 1] --></p>
               </div>
+              <span class="card-chip">Node.js · MongoDB</span> <!--[cite: 1] -->
+            </div>
+            <div class="card-body">
+              <p>Independently architected and built a full-stack platform for a volunteer-run organization to provide free educational access to students from low-income communities. <!--[cite: 1] --></p>
+              <ul class="feature-list">
+                <li>Developed the frontend with HTML, CSS, and JavaScript. <!--[cite: 1] --></li>
+                <li>Engineered the backend with Node.js and MongoDB for robust data persistence. <!--[cite: 1] --></li>
+                <li>Owned the project end-to-end from design through deployment. <!--[cite: 1] --></li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              Area: Education · Non-profit · Web
+            </div>
+          </article>
+
+          <article class="content-card">
+            <div class="card-top">
+              <div>
+                <h3 class="card-title">Learning Management System (LMS)</h3>
+                <p class="card-subtitle">Freelance · Unified end-to-end platform <!--[cite: 1] --></p>
+              </div>
+              <span class="card-chip">React.js · Python</span> <!--[cite: 1] -->
+            </div>
+            <div class="card-body">
+              <p>Independently architected and built a full-stack Learning Management System covering course enrollment, attendance tracking, assessments, and certificate management. <!--[cite: 1] --></p>
+              <ul class="feature-list">
+                <li>Built responsive client interfaces using React.js. <!--[cite: 1] --></li>
+                <li>Implemented robust backend infrastructure using Python. <!--[cite: 1] --></li>
+                <li>Integrated MongoDB as the primary database layer, delivering a complete solution. <!--[cite: 1] --></li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              Area: EdTech · Workflow automation
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Education</span>
+          <h2 class="section-title">Academic journey</h2>
+          <p class="section-subtitle">
+            A strong base in Computer Science, with steady performance and continuous learning.
+          </p>
+        </div>
+
+        <div class="content-card">
+          <div class="timeline">
+            <!-- College -->
+            <div class="timeline-node">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">B.E. Computer Science and Engineering <!--[cite: 1] --></div>
+              <div class="timeline-date">Velammal Engineering College · November 2021 – May 2025 <!--[cite: 1] --></div>
+              <div class="timeline-grade">CGPA: 7.16/10 <!--[cite: 1] --></div>
             </div>
 
-            <div class="hero-actions">
-              <a href="mailto:bala221104@gmail.com" class="btn btn-primary">
-                <span class="btn-icon">📨</span>
-                Contact Me
+            <!-- HSC -->
+            <div class="timeline-node">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Higher Secondary Certificate (HSC) <!--[cite: 1] --></div>
+              <div class="timeline-date">Government Higher Secondary School · June 2020 – April 2021 <!--[cite: 1] --></div>
+              <div class="timeline-grade">Percentage: 83.72% <!--[cite: 1] --></div>
+            </div>
+
+            <!-- SSLC -->
+            <div class="timeline-node">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Secondary School Leaving Certificate (SSLC) <!--[cite: 1] --></div>
+              <div class="timeline-date">Government Higher Secondary School · June 2018 – April 2019 <!--[cite: 1] --></div>
+              <div class="timeline-grade">Percentage: 80.00% <!--[cite: 1] --></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Contact</span>
+          <h2 class="section-title">Let’s connect</h2>
+          <p class="section-subtitle">
+            Feel free to reach out for opportunities, collaborations, or just to say hi.
+          </p>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <p><strong>Name:</strong> Balaji Chandrasekar <!--[cite: 1] --></p>
+            <p><strong>Role:</strong> Full Stack Software Engineer <!--[cite: 1] --></p>
+            <p><strong>Location:</strong> Chennai, Tamil Nadu, India <!--[cite: 1] --></p>
+
+            <div class="contact-links">
+              <a href="tel:+919342976898">
+                <span>📱</span> +91 9342976898 <!--[cite: 1] -->
               </a>
-              <a
-                href="https://linkedin.com/"
-                target="_blank"
-                class="btn btn-ghost"
-                rel="noreferrer"
-              >
-                <span class="btn-icon">💼</span>
-                LinkedIn Profile 
+              <a href="mailto:bala221104@gmail.com">
+                <span>✉️</span> bala221104@gmail.com <!--[cite: 1] -->
+              </a>
+              <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
+                <span>💼</span> LinkedIn Profile <!--[cite: 1] -->
               </a>
             </div>
           </div>
 
-          <div class="hero-right">
-            <aside class="hero-card" aria-label="Quick overview">
-              <div class="hero-card-header">
-                <div>
-                  <div class="hero-card-title">Quick Snapshot</div>
-                  <div class="hero-card-tag">What I bring to the table</div>
-                </div>
-                <span class="hero-card-pill">Open</span>
-              </div>
-
-              <div class="hero-stat-grid">
-                <div class="hero-stat">
-                  <div class="hero-stat-label">Core Stack</div>
-                  <div class="hero-stat-value">React · Spring</div> 
-                </div>
-                <div class="hero-stat">
-                  <div class="hero-stat-label">Focus</div>
-                  <div class="hero-stat-value">Web · Mobile</div> 
-                </div>
-                <div class="hero-stat">
-                  <div class="hero-stat-label">Languages</div>
-                  <div class="hero-stat-value">Ta · En · Jp</div> 
-                </div>
-              </div>
-
-              <div class="hero-card-footer">
-                <span>Based in Chennai, Tamil Nadu 🇮🇳</span> 
-                <span>B.E CSE · Velammal Engineering College</span> 
-              </div>
-            </aside>
-          </div>
+          <aside class="contact-box">
+            <h4>What I’m looking for</h4>
+            <p>Roles in full-stack software development, particularly leveraging React Native, Spring Boot, or Node.js.</p>
+            <p>I’m open to contributing to cross-functional teams, bridging technical and cross-border communication (Japanese JLPT N3), and building products that make a real-world impact.</p>
+            <p>If you think my profile matches what you’re building, I’d love to talk.</p>
+          </aside>
         </div>
-      </section>
-
-      <!-- ABOUT -->
-      <section id="about">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">About</div>
-            <h2 class="section-title">Who I am</h2>
-            <p class="section-subtitle">
-              I like understanding how things work end-to-end — from database design and backend architecture to intuitive frontend solutions.
-            </p>
-          </div>
-
-          <div class="grid-two">
-            <article class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">Professional Summary</h3>
-                  <p class="card-subtitle">In my own words</p>
-                </div>
-              </div>
-              <div class="card-body">
-                Full-stack Software Engineer with hands-on production experience across React Native, Spring Boot, Node.js, and Python, backed by strong database fundamentals in MySQL and MongoDB. Brings a rare combination of technical versatility and bilingual fluency in Japanese (JLPT N3), directly supporting cross-border client communication and translation in a live business environment. Has independently architected and delivered two full-stack platforms end-to-end. 
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">What I focus on</h3>
-                  <p class="card-subtitle">Areas I excel in</p>
-                </div>
-              </div>
-              <div class="card-body">
-                <ul class="card-list">
-                  <li>
-                    Architecting and delivering robust full-stack platforms end-to-end. 
-                  </li>
-                  <li>Cross-platform mobile development with React Native and backend microservices with Spring Boot. </li>
-                  <li>
-                    Serving as a bilingual technical liaison, bridging communication gaps for Japanese clients (JLPT N3). 
-                  </li>
-                  <li>
-                    Writing clean, scalable code within cross-functional engineering teams. 
-                  </li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- SKILLS -->
-      <section id="skills">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Skills</div>
-            <h2 class="section-title">Tech stack & strengths</h2>
-            <p class="section-subtitle">
-              A mix of programming languages, frameworks, and tools I use to ship production-ready applications.
-            </p>
-          </div>
-
-          <div class="skills-layout">
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">Technical Skills</h3>
-                  <p class="card-subtitle">Daily drivers & tools</p>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="skill-badges">
-                  <span class="skill-badge">Java</span> 
-                  <span class="skill-badge">Python</span> 
-                  <span class="skill-badge">JavaScript</span> 
-                  <span class="skill-badge">React.js</span> 
-                  <span class="skill-badge">React Native</span> 
-                  <span class="skill-badge">HTML5</span> 
-                  <span class="skill-badge">CSS3</span> 
-                  <span class="skill-badge">Node.js</span> 
-                  <span class="skill-badge">Spring Boot</span> 
-                  <span class="skill-badge">MongoDB</span> 
-                  <span class="skill-badge">MySQL</span> 
-                  <span class="skill-badge">Git/GitHub</span> 
-                </div>
-                <p class="skills-note">
-                  Certifications: MERN Stack Development (Udemy), Project Management Fundamentals (LinkedIn Learning). 
-                </p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">Languages & Communication</h3>
-                  <p class="card-subtitle">Human languages</p>
-                </div>
-              </div>
-              <div class="card-body">
-                <ul class="card-list">
-                  <li>Tamil – Native </li>
-                  <li>English – Professional Fluency </li>
-                  <li>Japanese – JLPT N3 </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- EXPERIENCE -->
-      <section id="experience">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Experience</div>
-            <h2 class="section-title">Work history</h2>
-            <p class="section-subtitle">
-              Professional software development and technical bilingual integration.
-            </p>
-          </div>
-
-          <div class="grid-two">
-            <article class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">Software Engineer Trainee</h3>
-                  <p class="card-subtitle">
-                    Fujisakura Tech Pvt. Ltd. · March 2026 – Present 
-                  </p>
-                </div>
-                <span class="chip">React Native · Spring Boot</span> 
-              </div>
-              <div class="card-body">
-                <ul class="card-list">
-                  <li>
-                    Developing full-stack features working across React Native for mobile, Spring Boot for backend services, and MySQL for data persistence. 
-                  </li>
-                  <li>
-                    Serving as the team's dedicated bilingual liaison for Japanese clients. 
-                  </li>
-                  <li>
-                    Providing direct translation and technical support that bridged technical and business communication across cross-border teams, alongside core development responsibilities. 
-                  </li>
-                </ul>
-              </div>
-              <div class="card-footer">
-                <span>Focus: Full-stack mobile apps, bilingual communication</span>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">Java Developer Intern</h3>
-                  <p class="card-subtitle">ReTech Solutions Pvt. Ltd. · July 2023 </p>
-                </div>
-                <span class="chip">Java · Spring Boot</span> 
-              </div>
-              <div class="card-body">
-                <ul class="card-list">
-                  <li>
-                    Contributed to a real-time, education-domain application, working within a Java and Spring Boot codebase. 
-                  </li>
-                  <li>
-                    Debugged and resolved issues across core application modules. 
-                  </li>
-                  <li>
-                    Contributed to design discussions, strengthening overall code stability and reliability. 
-                  </li>
-                </ul>
-              </div>
-              <div class="card-footer">
-                <span>Focus: Problem solving, clean code, reliability</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROJECTS -->
-      <section id="projects">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Projects</div>
-            <h2 class="section-title">Things I’ve built</h2>
-            <p class="section-subtitle">
-              Freelance projects independently architected from design through implementation.
-            </p>
-          </div>
-
-          <div class="grid-two">
-            <article class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">EDUTech Platform</h3>
-                  <p class="card-subtitle">
-                    Freelance · Full-stack e-learning platform 
-                  </p>
-                </div>
-                <span class="chip">Node.js · MongoDB</span> 
-              </div>
-              <div class="card-body">
-                <p>
-                  Independently architected and built a full-stack platform for a volunteer-run organization to provide free educational access to students from low-income communities. 
-                </p>
-                <ul class="card-list">
-                  <li>
-                    Developed the frontend with HTML, CSS, and JavaScript. 
-                  </li>
-                  <li>
-                    Engineered the backend with Node.js and MongoDB for robust data persistence. 
-                  </li>
-                  <li>Owned the project end-to-end from design through deployment. </li>
-                </ul>
-              </div>
-              <div class="card-footer">
-                <span>Area: Education · Non-profit · Web</span>
-              </div>
-            </article>
-
-            <article class="card">
-              <div class="card-header">
-                <div>
-                  <h3 class="card-title">Learning Management System (LMS)</h3>
-                  <p class="card-subtitle">
-                    Freelance · Unified end-to-end platform 
-                  </p>
-                </div>
-                <span class="chip">React.js · Python</span> 
-              </div>
-              <div class="card-body">
-                <p>
-                  Independently architected and built a full-stack Learning Management System covering course enrollment, attendance tracking, assessments, and certificate management. 
-                </p>
-                <ul class="card-list">
-                  <li>Built responsive client interfaces using React.js. </li>
-                  <li>
-                    Implemented robust backend infrastructure using Python. 
-                  </li>
-                  <li>
-                    Integrated MongoDB as the primary database layer, delivering a complete solution. 
-                  </li>
-                </ul>
-              </div>
-              <div class="card-footer">
-                <span>Area: EdTech · Workflow automation</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- EDUCATION -->
-      <section id="education">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Education</div>
-            <h2 class="section-title">Academic journey</h2>
-            <p class="section-subtitle">
-              A strong base in Computer Science, with steady performance and continuous learning.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-degree">
-                  B.E. Computer Science and Engineering 
-                </div>
-                <div class="timeline-meta">
-                  Velammal Engineering College · November 2021 – May 2025 
-                </div>
-                <div class="timeline-extra">CGPA: 7.16/10 </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-degree">
-                  Higher Secondary Certificate (HSC) 
-                </div>
-                <div class="timeline-meta">
-                  Government Higher Secondary School · June 2020 – April 2021 
-                </div>
-                <div class="timeline-extra">Percentage: 83.72% </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-degree">
-                  Secondary School Leaving Certificate (SSLC) 
-                </div>
-                <div class="timeline-meta">
-                  Government Higher Secondary School · June 2018 – April 2019 
-                </div>
-                <div class="timeline-extra">Percentage: 80.00% </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-kicker">Contact</div>
-            <h2 class="section-title">Let’s connect</h2>
-            <p class="section-subtitle">
-              Feel free to reach out for opportunities, collaborations, or just to say hi.
-            </p>
-          </div>
-
-          <div class="contact-grid">
-            <div class="contact-detail">
-              <p><strong>Name:</strong> Balaji Chandrasekar </p>
-              <p><strong>Role:</strong> Full Stack Software Engineer </p>
-              <p><strong>Location:</strong> Chennai, Tamil Nadu, India </p>
-
-              <div class="contact-links">
-                <a href="tel:+919342976898">
-                  <span class="icon">📱</span>
-                  <span>+91 9342976898</span> 
-                </a>
-                <a href="mailto:bala221104@gmail.com">
-                  <span class="icon">✉️</span>
-                  <span>bala221104@gmail.com</span> 
-                </a>
-                <a
-                  href="https://linkedin.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span class="icon">💼</span>
-                  <span>LinkedIn Profile</span> 
-                </a>
-              </div>
-            </div>
-
-            <aside class="contact-card">
-              <div class="contact-card-title">What I’m looking for</div>
-              <p>
-                Roles in full-stack software development, particularly leveraging React Native, Spring Boot, or Node.js.
-              </p>
-              <p>
-                I’m open to contributing to cross-functional teams, bridging technical and cross-border communication (Japanese JLPT N3), and building products that make a real-world impact.
-              </p>
-              <p>
-                If you think my profile matches what you’re building, I’d love to talk.
-              </p>
-            </aside>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="container footer-inner">
-        <span
-          >© <span id="year"></span> Balaji Chandrasekar. All rights reserved.</span
-        >
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <script>
-      // Set current year in footer
-      document.getElementById("year").textContent = new Date().getFullYear();
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-flex">
+      <span>© <span id="current-year"></span> Balaji Chandrasekar. All rights reserved.</span>
+    </div>
+  </footer>
 
-      // Smooth scroll + active link highlight
-      const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+  <!-- Scripts -->
+  <script>
+    // Just a fun easter egg for devs inspecting the code
+    console.log("Hey there! Thanks for checking out my source code. If you're hiring, let's chat!");
 
-      navLinks.forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute("href").substring(1);
-          const section = document.getElementById(targetId);
-          if (section) {
-            window.scrollTo({
-              top: section.offsetTop - 70,
-              behavior: "smooth",
-            });
-          }
-        });
+    // Auto-update footer year
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    // Smooth scroll for nav links
+    const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href").substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          // Adjust for fixed header height
+          window.scrollTo({
+            top: targetSection.offsetTop - 70, 
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+
+    // Active state highlighting on scroll
+    const sections = document.querySelectorAll("main section[id]");
+    
+    window.addEventListener("scroll", () => {
+      let currentSectionId = "";
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120; // Offset for nav height
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          currentSectionId = section.getAttribute("id");
+        }
       });
 
-      // Highlight active section in navbar
-      const sections = document.querySelectorAll("main section[id]");
-      window.addEventListener("scroll", () => {
-        let currentId = "";
-        const scrollPos =
-          window.pageYOffset || document.documentElement.scrollTop;
-
-        sections.forEach((section) => {
-          const offset = section.offsetTop - 120;
-          const height = section.offsetHeight;
-          if (scrollPos >= offset && scrollPos < offset + height) {
-            currentId = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === "#" + currentId
-          );
-        });
+      // Update classes
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + currentSectionId) {
+          link.classList.add("active");
+        }
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
